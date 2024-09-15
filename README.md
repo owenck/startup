@@ -14,4 +14,5 @@ Play online tag with your friends in Tagster! Tagster is a fun way to stay conne
 
 
 ## Rough Draft UI Design
-![image description for alt text](repo/path/to/image.png)
+![Home Page Rough Draft](homepage.png)
+![Login Page Rough Draft](loginpage.png)
