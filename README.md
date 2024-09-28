@@ -1,6 +1,6 @@
 # Startup Application
 ## Elevator Pitch
-Play online tag with your friends in Tagster! Tagster is a fun way to stay connected with you friends throughout the day. Jump into tagster and tag your friends to make them it! The longer that you're not it the more points you get. First one to reach the point limit wins braagging rights and becomes the ultimate tagster!
+Play online tag with your friends in Tagster! Tagster is a fun way to stay connected with you friends throughout the day. Jump into tagster and tag your friends to make them it! The longer that you're not it the more points you get. First one to reach the point limit wins bragging rights and becomes the ultimate tagster!
 
 ## Key Features
 - Login Page
