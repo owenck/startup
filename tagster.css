@@ -10,6 +10,37 @@ p {
     text-align: center;
 }
 
+.navbar {
+    background-color: #606060; /* Navbar background color */
+    padding: 15px 20px; /* Padding for the navbar */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.navbar-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between brand and menu */
+    align-items: center; /* Center items vertically */
+}
+
+.navbar-menu {
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Horizontal layout */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.navbar-item {
+    color: #ffffff; /* Menu item text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Padding for menu items */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.navbar-item:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
 .heading {
     text-align: center;
     font-size: 36px; 
