@@ -23,6 +23,8 @@ Play online tag with your friends in Tagster! Tagster is a fun way to stay conne
 ![Home Page Rough Draft](homepage.png)
 ![Login Page Rough Draft](loginpage.png)
 
+---
+
 # HTML Deliverable
 For this deliverable, I have laid out the basic format of my website
 
@@ -32,3 +34,15 @@ For this deliverable, I have laid out the basic format of my website
 - Content - Placeholders created for friends as well as data supplied from a database such as users and tag scores
 - WebSocket - Placeholder created to tag players and show wether a friend or the user is currently it.
 - Images - Placeholder images included to represent friends
+
+---
+
+# CSS Deliverable
+For this deliverable, I properly styled my application
+
+- Properly styled header, footer, and body content in CSS
+- Styled Nav Bar
+- Styled Login, Tag, and Add friends buttons
+- Friends grid that is responsive to window resizing
+- Consistent and aesthetically pleasing fonts and colors
+- stylized circular friends profile images
