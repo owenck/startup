@@ -1,5 +1,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    background-color: #fdf9e7;
 }
 
 p {
@@ -85,6 +88,30 @@ footer {
     justify-content: center;
 }
 
+.addbutton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 40px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+    text-align: center;
+    line-height: 45px;
+    text-decoration: solid;
+}
+
+.addbutton:hover {
+    background-color: #0056b3; 
+}
+
 .textbox {
     display: flex;
     justify-content: center;
@@ -92,43 +119,43 @@ footer {
 }
 
 .loginbutton {
-    background-color: #007BFF; /* Button background color */
-    color: white; /* Text color */
-    font-size: 16px; /* Font size */
-    padding: 12px 20px; /* Padding */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    background-color: #007BFF; 
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .loginbutton:hover {
-    background-color: #0056b3; /* Darker background on hover */
-    transform: translateY(-2px); /* Lift effect */
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 .loginbutton:active {
-    transform: translateY(1px); /* Pressed effect */
+    transform: translateY(1px);
 }
 
 .tagbutton {
-    background-color: #000000; /* Button background color */
-    color: white; /* Text color */
-    font-size: 16px; /* Font size */
-    padding: 12px 20px; /* Padding */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; 
 }
 
 .tagbutton:hover {
-    background-color: #0056b3; /* Darker background on hover */
-    transform: translateY(-2px); /* Lift effect */
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 .tagbutton:active {
-    transform: translateY(1px); /* Pressed effect */
+    transform: translateY(1px);
 }
 
 .banner {
@@ -142,7 +169,7 @@ footer {
 
 .name {
     text-align: center;
-    font-size: larger;
+    font-size: 25px;
     font-weight: bold; /* Bold text */
     color: #000000; /* Text color */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect */
@@ -170,6 +197,7 @@ footer {
     padding: 5px;
     background-color: #f9f9f9;
     max-width: 750px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .grid-item img {
