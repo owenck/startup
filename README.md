@@ -1,6 +1,6 @@
 # Startup Application
 ## Elevator Pitch
-Play online tag with your friends in Tagster! Tagster is a fun way to stay connected with you friends throughout the day. Jump into tagster and tag your friends to make them it! The longer that you're not it the more points you get. First one to reach the point limit wins bragging rights and becomes the ultimate tagster!
+Play online tag with your friends in Tagster! Tagster is a fun way to stay connected with your friends throughout the day. See your friend at the library, in the WILK, or walking to class? Jump into tagster and tag your friend to make them it! The longer that you're not it the more points you get. First one to reach the point limit wins bragging rights and becomes the ultimate tagster!
 
 ## Key Features
 - Login Page
@@ -22,3 +22,13 @@ Play online tag with your friends in Tagster! Tagster is a fun way to stay conne
 ## Rough Draft UI Design
 ![Home Page Rough Draft](homepage.png)
 ![Login Page Rough Draft](loginpage.png)
+
+# HTML Deliverable
+For this deliverable, I have laid out the basic format of my website
+
+- 4 HTML Pages
+- Navigation - can effectively navigate through all aspects of my application
+- Authentication - placeholder created for login page
+- Content - Placeholders created for friends as well as data supplied from a database such as users and tag scores
+- WebSocket - Placeholder created to tag players and show wether a friend or the user is currently it.
+- Images - Placeholder images included to represent friends
