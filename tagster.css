@@ -111,6 +111,26 @@ footer {
     transform: translateY(1px); /* Pressed effect */
 }
 
+.tagbutton {
+    background-color: #000000; /* Button background color */
+    color: white; /* Text color */
+    font-size: 16px; /* Font size */
+    padding: 12px 20px; /* Padding */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+.tagbutton:hover {
+    background-color: #0056b3; /* Darker background on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+.tagbutton:active {
+    transform: translateY(1px); /* Pressed effect */
+}
+
 .banner {
     background-color: #9cf0ff;
     padding: 5%;
@@ -123,6 +143,11 @@ footer {
 .name {
     text-align: center;
     font-size: larger;
+    font-weight: bold; /* Bold text */
+    color: #000000; /* Text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    margin: 20px 0; /* Margin */
+
 }
 
 .image-grid {
@@ -134,7 +159,7 @@ footer {
 
 .grid-item {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
     padding: 10px;
 
@@ -151,7 +176,7 @@ footer {
     width: 100%;
     height: auto; 
     max-width: 300px;
-    border-radius: 8px; 
+    border-radius: 50%; 
     object-fit: cover;
 }
 
