@@ -2,38 +2,38 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-nav {
-    background-color: #bfbfbf;
-}
-
 p {
     text-align: center;
 }
 
+h3 {
+    text-align: center;
+}
+
 .navbar {
-    background-color: #606060; /* Navbar background color */
-    padding: 15px 20px; /* Padding for the navbar */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    background-color: #606060;
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-container {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space between brand and menu */
-    align-items: center; /* Center items vertically */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-menu {
-    list-style: none; /* Remove bullet points */
-    display: flex; /* Horizontal layout */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-item {
-    color: #ffffff; /* Menu item text color */
-    text-decoration: none; /* Remove underline */
-    padding: 10px 15px; /* Padding for menu items */
-    transition: background-color 0.3s; /* Smooth transition */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s; 
 }
 
 .navbar-item:hover {
@@ -64,23 +64,25 @@ input {
 }
 
 footer {
-    background-color: #ffffff;
+    background-color: #606060;
     padding: 20px;
-    border-radius: 10px; 
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
     transition: box-shadow 0.3s ease; 
     text-align: center; 
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
+    color: #ffffff;
 }
 
 .login {
+    display: flex;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px; 
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
     transition: box-shadow 0.3s ease; 
+    justify-content: center;
 }
 
 .textbox {
@@ -90,12 +92,28 @@ footer {
 }
 
 .loginbutton {
-    width: 20%;
+    background-color: #007BFF; /* Button background color */
+    color: white; /* Text color */
+    font-size: 16px; /* Font size */
+    padding: 12px 20px; /* Padding */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+.loginbutton:hover {
+    background-color: #0056b3; /* Darker background on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+.loginbutton:active {
+    transform: translateY(1px); /* Pressed effect */
 }
 
 .banner {
     background-color: #9cf0ff;
-    padding: 10%;
+    padding: 5%;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -135,4 +153,8 @@ footer {
     max-width: 300px;
     border-radius: 8px; 
     object-fit: cover;
+}
+
+.githublink {
+    color: #ffffff;
 }
