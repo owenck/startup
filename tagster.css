@@ -2,6 +2,49 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+nav {
+    background-color: #bfbfbf;
+}
+
+p {
+    text-align: center;
+}
+
+input {
+    width: 300px;
+    height: 25px;
+}
+
+footer {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+    transition: box-shadow 0.3s ease; 
+    text-align: center; 
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.textbox {
+    display: flex;
+    justify-content: center;
+}
+
+.loginbutton {
+    width: 20%;
+}
+
+.banner {
+    background-color: #9cf0ff;
+    padding: 10%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
 .name {
     text-align: center;
     font-size: larger;
@@ -30,9 +73,9 @@ body {
 }
 
 .grid-item img {
-    width: 100%; /* Makes the image fill the grid cell */
-    height: auto; /* Maintains aspect ratio */
+    width: 100%;
+    height: auto; 
     max-width: 300px;
-    border-radius: 8px; /* Optional: adds rounded corners */
-    object-fit: cover; /* Ensures the image covers the cell without distortion */
+    border-radius: 8px; 
+    object-fit: cover;
 }
