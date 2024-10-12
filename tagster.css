@@ -10,9 +10,26 @@ p {
     text-align: center;
 }
 
+.heading {
+    text-align: center;
+    font-size: 36px; 
+    font-weight: bold; 
+    color: #000000;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px; 
+}
+
 input {
     width: 300px;
     height: 25px;
+    padding: 12px 15px;
+    border: 2px solid #626262; 
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #ffffff;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 footer {
@@ -27,9 +44,18 @@ footer {
     box-sizing: border-box;
 }
 
+.login {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+    transition: box-shadow 0.3s ease; 
+}
+
 .textbox {
     display: flex;
     justify-content: center;
+    
 }
 
 .loginbutton {
