@@ -41,8 +41,6 @@ video	Video content
 svg	Scalable vector graphic content
 iframe	Inline frame of another HTML page
 
-# Web Development Cheat Sheet
-
 1. **Link Element**:
    - The `<link>` element links external resources, typically CSS stylesheets, to an HTML document.
 
