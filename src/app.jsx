@@ -1,32 +1,49 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './tagster.css';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Login } from './login/login';
+import { Add } from './add/add';
+import { Friends } from './friends/friends';
+import { About } from './about/about';
 
 export default function App() {
   return (
-    <div className='body bg-dark text-light'>
-        <nav className="navbar">
-            <div className="navbar-container">
-                <ul className="navbar-menu">
-                    <li>
-                        <a href='index.html' className="navbar-item">Home</a>
-                    </li>
-                <li>
-                        <a href='friends.html' className="navbar-item">Friends</a>
-                </li>
-                    <li>
-                        <a href='about.html' className="navbar-item">About</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <BrowserRouter>
+        <div className='body bg-dark text-light'>
+            <nav className="navbar">
+                <div className="navbar-container">
+                    <ul className="navbar-menu">
+                        <li>
+                            <NavLink className="navbar-item" to=''>Login</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="navbar-item" to='friends'>Friends</NavLink>
+                        </li>
+                        <li>
+                            <NavLink className="navbar-item" to='about'>About</NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-        <main>Main content goes here</main>
+            <Routes>
+            <Route path='/' element={<Login />} exact />
+            <Route path='/friends' element={<Friends />} />
+            <Route path='/add' element={<Add />} />
+            <Route path='/about' element={<About />} />
+            <Route path='*' element={<NotFound />} />
+            </Routes>
 
-        <footer>
-            <div>Author: Owen Keeler</div>
-            <a href="https://github.com/owenck/startup" className="githublink">My GitHub Repository</a>
-        </footer>
-    </div>
+            <footer>
+                <div>Author: Owen Keeler</div>
+                <a href="https://github.com/owenck/startup" className="githublink">My GitHub Repository</a>
+            </footer>
+        </div>
+    </BrowserRouter>
   );
 }
+
+function NotFound() {
+    return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+  }
