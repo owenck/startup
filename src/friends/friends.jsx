@@ -1,10 +1,10 @@
 import React from 'react';
 
-export function Friends() {
+export function Friends(props) {
   return (
     <main className='container-fluid bg-secondary text-center'>
         <div>
-            <h1 className="banner">Welcome, User</h1>
+            <h1 className="banner">Welcome, {props.userName}</h1>
 
             <div className="image-grid">
 

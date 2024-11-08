@@ -50,7 +50,7 @@ export default function App() {
             exact
           />
             <Route path='/' element={<Login />} exact />
-            <Route path='/friends' element={<Friends />} />
+            <Route path='/friends' element={<Friends userName={userName}/>} />
             <Route path='/add' element={<Add />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
