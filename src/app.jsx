@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './tagster.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { Login } from './login/login';
 import { Add } from './add/add';
 import { Friends } from './friends/friends';
@@ -26,7 +26,7 @@ export default function App() {
                     </ul>
                 </div>
             </nav>
-
+            <AddButton />
             <Routes>
             <Route path='/' element={<Login />} exact />
             <Route path='/friends' element={<Friends />} />
@@ -47,3 +47,24 @@ export default function App() {
 function NotFound() {
     return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
   }
+
+function AddButton() {
+    const location = useLocation();
+
+    if (location.pathname === '/friends') {
+        return (
+            <div>
+                <NavLink className="addbutton" to='add'>+</NavLink>
+            </div>
+        );
+    }
+
+    return null;
+}
+
+function NavBarFriends() {
+    const location = useLocation();
+
+
+    return null;
+}

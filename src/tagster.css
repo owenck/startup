@@ -104,7 +104,7 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s;
     text-align: center;
-    line-height: 45px;
+    line-height: 25px;
     text-decoration: solid;
 }
 
@@ -165,6 +165,7 @@ footer {
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease;
+    color: #000000;
 }
 
 .name {
@@ -210,4 +211,9 @@ footer {
 
 .githublink {
     color: #ffffff;
+}
+
+.content {
+    color:#000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
