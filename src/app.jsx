@@ -49,10 +49,9 @@ export default function App() {
             }
             exact
           />
-            <Route path='/' element={<Login />} exact />
             <Route path='/friends' element={<Friends userName={userName}/>} />
-            <Route path='/add' element={<Add />} />
             <Route path='/about' element={<About />} />
+            <Route path='/add' element={<Add />} />
             <Route path='*' element={<NotFound />} />
             </Routes>
 
@@ -75,7 +74,7 @@ function AddButton() {
     if (location.pathname === '/friends') {
         return (
             <div>
-                <NavLink className="addbutton" to='add'>+</NavLink>
+                <NavLink className="addbutton" to='/add'>+</NavLink>
             </div>
         );
     }
