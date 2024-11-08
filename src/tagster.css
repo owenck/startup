@@ -217,3 +217,23 @@ footer {
     color:#000000;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.logoutbutton {
+    background-color: #565656; 
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.logoutbutton:hover {
+    background-color: #000000;
+    transform: translateY(-2px);
+}
+
+.logoutbutton:active {
+    transform: translateY(1px);
+}

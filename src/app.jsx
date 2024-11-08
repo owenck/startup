@@ -6,8 +6,13 @@ import { Login } from './login/login';
 import { Add } from './add/add';
 import { Friends } from './friends/friends';
 import { About } from './about/about';
+import { AuthState } from './login/authState';
 
 export default function App() {
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
+
   return (
     <BrowserRouter>
         <div className='body bg-dark text-light'>
@@ -17,9 +22,11 @@ export default function App() {
                         <li>
                             <NavLink className="navbar-item" to=''>Login</NavLink>
                         </li>
-                        <li>
+                        {authState === AuthState.Authenticated && (
+                            <li>
                             <NavLink className="navbar-item" to='friends'>Friends</NavLink>
-                        </li>
+                            </li>
+                        )}
                         <li>
                             <NavLink className="navbar-item" to='about'>About</NavLink>
                         </li>
@@ -28,6 +35,20 @@ export default function App() {
             </nav>
             <AddButton />
             <Routes>
+            <Route
+            path='/'
+            element={
+              <Login
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
+              />
+            }
+            exact
+          />
             <Route path='/' element={<Login />} exact />
             <Route path='/friends' element={<Friends />} />
             <Route path='/add' element={<Add />} />
@@ -58,13 +79,6 @@ function AddButton() {
             </div>
         );
     }
-
-    return null;
-}
-
-function NavBarFriends() {
-    const location = useLocation();
-
 
     return null;
 }
