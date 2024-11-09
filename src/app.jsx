@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './tagster.css';
 import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
@@ -12,6 +12,14 @@ export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
     const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
+
+    
+    const [friends, setFriends] = useState([]);
+
+    const addFriend = (friendName) => {
+        setFriends([...friends, friendName]);
+    };
+    
 
   return (
     <BrowserRouter>
@@ -49,9 +57,9 @@ export default function App() {
             }
             exact
           />
-            <Route path='/friends' element={<Friends userName={userName}/>} />
+            <Route path='/friends' element={<Friends userName={userName} friends={friends}/>} />
             <Route path='/about' element={<About />} />
-            <Route path='/add' element={<Add />} />
+            <Route path='/add' element={<Add addFriend={addFriend}/>} />
             <Route path='*' element={<NotFound />} />
             </Routes>
 
