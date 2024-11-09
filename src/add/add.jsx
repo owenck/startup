@@ -3,11 +3,15 @@ import Button from 'react-bootstrap/Button';
 
 export function Add({ addFriend }) {
     const [friendName, setFriendName] = useState('');
+    const [showSuccess, setShowSuccess] = useState(false);
 
     const handleAddFriend = () => {
         if (friendName) {
             addFriend(friendName);
             setFriendName('');
+            setShowSuccess(true);
+
+            setTimeout(() => setShowSuccess(false), 2000);
         }
     };
 
@@ -22,6 +26,12 @@ export function Add({ addFriend }) {
                     placeholder="Friend's Username" 
                 />
                 <button onClick={handleAddFriend}>Add Friend</button>
+
+                {showSuccess && (
+                    <div className="success-popup">
+                        Friend added successfully!
+                    </div>
+                )}
             </div>
     </main>
   );

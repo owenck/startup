@@ -4,7 +4,7 @@ import './tagster.css';
 import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { Login } from './login/login';
 import { Add } from './add/add';
-import { Friends } from './friends/friends';
+import { Play } from './play/play';
 import { About } from './about/about';
 import { AuthState } from './login/authState';
 
@@ -32,7 +32,7 @@ export default function App() {
                         </li>
                         {authState === AuthState.Authenticated && (
                             <li>
-                            <NavLink className="navbar-item" to='friends'>Friends</NavLink>
+                            <NavLink className="navbar-item" to='play'>Play</NavLink>
                             </li>
                         )}
                         <li>
@@ -57,7 +57,7 @@ export default function App() {
             }
             exact
           />
-            <Route path='/friends' element={<Friends userName={userName} friends={friends}/>} />
+            <Route path='/play' element={<Play userName={userName} friends={friends}/>} />
             <Route path='/about' element={<About />} />
             <Route path='/add' element={<Add addFriend={addFriend}/>} />
             <Route path='*' element={<NotFound />} />
@@ -79,7 +79,7 @@ function NotFound() {
 function AddButton() {
     const location = useLocation();
 
-    if (location.pathname === '/friends') {
+    if (location.pathname === '/play') {
         return (
             <div>
                 <NavLink className="addbutton" to='/add'>+</NavLink>

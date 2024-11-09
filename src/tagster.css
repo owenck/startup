@@ -237,3 +237,11 @@ footer {
 .logoutbutton:active {
     transform: translateY(1px);
 }
+
+.success-popup {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}

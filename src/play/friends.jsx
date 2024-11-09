@@ -10,7 +10,7 @@ export function Friends({userName, friends }) {
                     friends.map((friend, index) => (
                         <div key={index} className="grid-item">
                             <h5 className="name">{friend}</h5>
-                            <img alt="friend 1" src="doodleperson.jpg"/>
+                            <img alt="friend name not found" src="doodleperson.jpg"/>
                             <div className="content">Tag Score: Database Component</div>
                             <div className="content">Tag Status: Websocket Data</div>
                             <button type="submit" className="tagbutton">Tag!</button>
