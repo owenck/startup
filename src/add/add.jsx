@@ -25,7 +25,7 @@ export function Add({ addFriend }) {
                     onChange={(e) => setFriendName(e.target.value)} 
                     placeholder="Friend's Username" 
                 />
-                <button onClick={handleAddFriend}>Add Friend</button>
+                <button className="loginbutton" onClick={handleAddFriend}>Add Friend</button>
 
                 {showSuccess && (
                     <div className="success-popup">

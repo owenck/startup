@@ -17,10 +17,16 @@ export default function App() {
     const [friends, setFriends] = useState([]);
 
     const addFriend = (friendName) => {
-        setFriends([...friends, friendName]);
+        const newFriend = { name: friendName, score: 0, tagState: true};
+        setFriends([...friends, newFriend]);
+    };
+
+    const increaseScore = (index) => {
+        setFriends(friends.map((friend, i) => 
+            i === index && friend.tagState ? { ...friend, score: friend.score + 1, tagState: false } : friend
+        ));
     };
     
-
   return (
     <BrowserRouter>
         <div className='body bg-dark text-light'>
@@ -57,9 +63,9 @@ export default function App() {
             }
             exact
           />
-            <Route path='/play' element={<Play userName={userName} friends={friends}/>} />
+            <Route path='/play' element={<Play userName={userName} friends={friends} increaseScore={increaseScore} />} />
             <Route path='/about' element={<About />} />
-            <Route path='/add' element={<Add addFriend={addFriend}/>} />
+            <Route path='/add' element={<Add addFriend={addFriend} />} />
             <Route path='*' element={<NotFound />} />
             </Routes>
 

@@ -158,6 +158,10 @@ footer {
     transform: translateY(1px);
 }
 
+.tagbutton:disabled {
+    background-color: #565656;
+}
+
 .banner {
     background-color: #9cf0ff;
     padding: 5%;
