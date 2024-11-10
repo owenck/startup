@@ -46,3 +46,14 @@ For this deliverable, I properly styled my application
 - Friends grid that is responsive to window resizing
 - Consistent and aesthetically pleasing fonts and colors
 - stylized circular friends profile images
+
+---
+
+# React Deliverable
+For this deliverable I have converted my site to React and have mimicked app functionality. App will only become functional with a database allowing player to player interaction.
+
+- Bundled with Vite
+- Login page with mimicking functionality
+- Friends page with ability to add friends to homepage
+- Router - routing between login, play, about, and add pages
+- Hooks - uses UseState to manage an array of friends object with name, tag score, and whether they are "it"
