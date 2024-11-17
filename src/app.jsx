@@ -19,7 +19,18 @@ export default function App() {
     const addFriend = (friendName) => {
         const newFriend = { name: friendName, score: 0, tagState: true};
         setFriends([...friends, newFriend]);
+        sendFriendToBackend(newFriend);
     };
+
+    function sendFriendToBackend(friend) {
+        fetch('/api/friends', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(friend),
+        })
+    }
 
     const increaseScore = (index) => {
         setFriends(friends.map((friend, i) => 

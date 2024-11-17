@@ -3,7 +3,7 @@ const uuid = require('uuid');
 const app = express();
 
 let users = {};
-let friends = {};
+const friends = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -19,8 +19,16 @@ apiRouter.get('/friends', (_req, res) => {
   });
 
 apiRouter.post('/friends', (req, res) => {
-    scores = updateFriends(req.body, Friends);
-    res.send(friends);
+    const friend = req.body; 
+
+    friends.push(friend);
+
+    console.log('Friend added:', friend);
+    res.status(201).json({
+        message: 'Friend added successfully',
+        friend: friend,
+        allFriends: friends,
+    });
 });
 
 apiRouter.get('/users', (_req, res) => {
@@ -57,7 +65,6 @@ apiRouter.post('/auth/create', async (req, res) => {
   });
 
 
-// DeleteAuth logout a user
 apiRouter.delete('/auth/logout', (req, res) => {
     const user = Object.values(users).find((u) => u.token === req.body.token);
     if (user) {
