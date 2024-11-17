@@ -57,3 +57,13 @@ For this deliverable I have converted my site to React and have mimicked app fun
 - Friends page with ability to add friends to homepage
 - Router - routing between login, play, about, and add pages
 - Hooks - uses UseState to manage an array of friends object with name, tag score, and whether they are "it"
+
+
+# Service Deliverable
+
+For this deliverable I created endpoints to pass users and friends to the backend. I also called APIs to give friends random profile pictures and a random dog picture on the about page
+
+- Node.js/Express HTTP service - done
+- Calls to third party endpoints - done
+- Custom backend - stores friends and users
+- frontend service calls backend - completed with fetch
