@@ -10,11 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "cookie-parser": "^1.4.7",
     "express": "^4.21.1",
-    "mongodb": "^6.11.0",
-    "node": "^18.20.5",
-    "uuid": "^11.0.3"
+    "node": "^18.20.5"
   }
 }
