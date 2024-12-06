@@ -26,7 +26,7 @@ function getUserByToken(token) {
   return userCollection.findOne({ token: token });
 }
 
-async function createUser(email, password) {
+async function createUser(email, password, profilePicture) {
     // Hash the password before we insert it into the database
     const passwordHash = await bcrypt.hash(password, 10);
   
@@ -35,7 +35,8 @@ async function createUser(email, password) {
       password: passwordHash,
       token: uuid.v4(),
       score: 0,
-      image: '',
+      image: profilePicture,
+      friends: [],
     };
     await userCollection.insertOne(user);
   
@@ -50,10 +51,23 @@ async function createUser(email, password) {
     return userCollection.findOne({ image: image });
   }
 
+  async function getFriendsArray(user) {
+    const userData = await userCollection.findOne({ email: user });
+  
+    // If user not found or friends array is not defined, return an empty array
+    return userData?.friends || [];
+}
+
+  function updateFriendsArray(user, friends) {
+    userCollection.findOneAndUpdate({email: user}, { $set: {friends: friends}});
+  }
+
   module.exports = {
     getUser,
     getUserByToken,
     createUser,
     addScore,
     getImage,
+    getFriendsArray,
+    updateFriendsArray,
   };

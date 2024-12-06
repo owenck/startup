@@ -26,7 +26,6 @@ export function Add({ addFriend }) {
                     placeholder="Friend's Username" 
                 />
                 <button className="loginbutton" onClick={handleAddFriend}>Add Friend</button>
-
                 {showSuccess && (
                     <div className="success-popup">
                         Friend added successfully!

@@ -28,8 +28,26 @@ export default function App() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(friend),
+            body: JSON.stringify({ name: friend.name, userName: userName }), // Correct JSON structure
         })
+        .then(response => {
+            if (!response.ok) {
+                // Handle errors properly
+                console.error("Error sending friend:", response.status, response.statusText);
+                // Optionally, throw an error to be caught further up the call stack
+                throw new Error(`HTTP error! status: ${response.status}`);
+                // Or display an error message to the user
+            }
+            return response.json(); // Parse the response if needed
+        })
+        .then(data => {
+            // Handle successful response from the server
+            console.log("Friend sent successfully:", data);
+        })
+        .catch(error => {
+            console.error("Error sending friend:", error);
+            // Display an error message to the user
+        });
     }
 
     const increaseScore = (index) => {

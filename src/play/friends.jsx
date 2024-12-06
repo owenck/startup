@@ -16,6 +16,29 @@ function StatusMessage(friend, index) {
     }
 }
 
+async function getFriends() {
+    try {
+        // Use fetch to call the /api/friends endpoint
+        const response = await fetch('/api/friends');
+
+        // Check if the response is OK (status in the range 200-299)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Parse the JSON data from the response
+        const friends = await response.json();
+
+        // Log the friends array or do something with it
+        console.log('Friends List:', friends);
+        return friends;
+
+    } catch (error) {
+        // Handle any errors that occur during the fetch
+        console.error('Error fetching friends:', error);
+    }
+}
+
 export function Friends({ userName, friends, increaseScore }) {
     const [friendImages, setFriendImages] = React.useState([]);
 
@@ -65,7 +88,7 @@ export function Friends({ userName, friends, increaseScore }) {
                     <p>
                         No friends added yet.
                         <br />
-                        Add one with the + button!
+                        Try adding one with the + button!
                     </p>
                 )}
             </div>

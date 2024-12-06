@@ -2,13 +2,13 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const uuid = require('uuid');
+const path = require('path');
 const app = express();
 const DB = require('./database.js');
 
 const authCookieName = 'token';
 
 let users = {};
-const friends = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -29,17 +29,26 @@ apiRouter.get('/friends', (_req, res) => {
     res.send(friends);
   });
 
-apiRouter.post('/friends', (req, res) => {
-    const friend = req.body; 
+apiRouter.post('/friends', async (req, res) => {
+    const friend = req.body.name; 
+    const user = req.body.userName;
 
-    friends.push(friend);
+    
+    let friends = await DB.getFriendsArray(user);
+    console.log(friends);
 
+    if (!friends.includes(friend)) {
+      friends.push(friend);
+      await DB.updateFriendsArray(user, friends);
+    }
+    
     console.log('Friend added:', friend);
     res.status(201).json({
         message: 'Friend added successfully',
         friend: friend,
         allFriends: friends,
     });
+
 });
 
 apiRouter.get('/users', (_req, res) => {
@@ -56,7 +65,7 @@ apiRouter.post('/auth/create', async (req, res) => {
   if (await DB.getUser(req.body.email)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = await DB.createUser(req.body.email, req.body.password);
+    const user = await DB.createUser(req.body.email, req.body.password, req.body.profilePicture);
 
     // Set the cookie
     setAuthCookie(res, user.token);
