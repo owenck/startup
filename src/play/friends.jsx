@@ -97,7 +97,7 @@ export function Friends({ userName, increaseScore }) {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email: friend.email }), // Assuming `friend.name` is the username
+            body: JSON.stringify({ email: friend.email, userName }), // Assuming `friend.name` is the username
           });
       
           if (!response.ok) {
@@ -113,7 +113,7 @@ export function Friends({ userName, increaseScore }) {
           console.error('Error increasing score:', error);
         }
 
-        
+
       };
 
     return (

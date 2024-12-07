@@ -54,7 +54,7 @@ apiRouter.post('/friends', async (req, res) => {
 
 // API endpoint to increase the score of a user
 app.post('/api/friends/increaseScore', async (req, res) => {
-  const { email } = req.body;
+  const { email, userName } = req.body;
 
   if (!email) {
     return res.status(400).json({ error: 'Username is required' });
@@ -63,12 +63,15 @@ app.post('/api/friends/increaseScore', async (req, res) => {
   try {
     // Increment the score for the specified user
     DB.updateScore(email);
-
+    DB.updateUserTagState(userName);
+    
     res.status(200).json({ message: 'Score updated successfully' });
   } catch (error) {
     console.error('Error updating score:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+
+
 });
 
 // API endpoint to retrieve friends' data in bulk

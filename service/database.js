@@ -96,6 +96,13 @@ async function createUser(email, password, profilePicture) {
     );
   }
 
+  async function updateUserTagState(userName) {
+    await userCollection.updateOne(
+      { email: userName }, // Find the current user by email
+      { $set: { tagState: true } } // Set tagState to true
+    );
+  }
+
   module.exports = {
     getUser,
     getUserByToken,
@@ -106,4 +113,5 @@ async function createUser(email, password, profilePicture) {
     updateFriendsArray,
     getBulkData,
     updateScore,
+    updateUserTagState,
   };
