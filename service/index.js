@@ -64,7 +64,7 @@ app.post('/api/friends/increaseScore', async (req, res) => {
     // Increment the score for the specified user
     DB.updateScore(email);
     DB.updateUserTagState(userName);
-    
+
     res.status(200).json({ message: 'Score updated successfully' });
   } catch (error) {
     console.error('Error updating score:', error);
