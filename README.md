@@ -67,3 +67,14 @@ For this deliverable I created endpoints to pass users and friends to the backen
 - Calls to third party endpoints - done
 - Custom backend - stores friends and users
 - frontend service calls backend - completed with fetch
+
+# Database / Login Deliverable
+
+In this deliverable my app is almost entirely functional there are some components that will work better with a socket connection, but they work with a page refresh
+
+All data is stored and retrieved from my database including creation and authentication of users 
+
+- MongoDB Atlas database created!
+- Friends List, Scores, and Tag Status all stored in DB
+- User registration and existing user authentication created!
+- Functionality restricted to only authenticated users
