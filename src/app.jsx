@@ -49,12 +49,6 @@ export default function App() {
             // Display an error message to the user
         });
     }
-
-    const increaseScore = (index) => {
-        setFriends(friends.map((friend, i) => 
-            i === index && friend.tagState ? { ...friend, score: friend.score + 1, tagState: false } : friend
-        ));
-    };
     
   return (
     <BrowserRouter>
@@ -92,7 +86,7 @@ export default function App() {
             }
             exact
           />
-            <Route path='/play' element={<Play userName={userName} friends={friends} increaseScore={increaseScore} />} />
+            <Route path='/play' element={<Play userName={userName} friends={friends} />} />
             <Route path='/about' element={<About />} />
             <Route path='/add' element={<Add addFriend={addFriend} />} />
             <Route path='*' element={<NotFound />} />

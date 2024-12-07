@@ -25,7 +25,8 @@ app.set('trust proxy', true);
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-apiRouter.get('/friends', (_req, res) => {
+apiRouter.post('/friends/list', async (req, res) => {
+    let friends = await DB.getFriendsArray(req.body.userName);
     res.send(friends);
   });
 
@@ -51,13 +52,62 @@ apiRouter.post('/friends', async (req, res) => {
 
 });
 
-apiRouter.get('/users', (_req, res) => {
-    res.send(users);
-  });
+// API endpoint to increase the score of a user
+app.post('/api/friends/increaseScore', async (req, res) => {
+  const { email } = req.body;
 
-apiRouter.post('/users', (req, res) => {
-    scores = updateUsers(req.body, users);
-    res.send(users);
+  if (!email) {
+    return res.status(400).json({ error: 'Username is required' });
+  }
+
+  try {
+    // Increment the score for the specified user
+    DB.updateScore(email);
+
+    res.status(200).json({ message: 'Score updated successfully' });
+  } catch (error) {
+    console.error('Error updating score:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// API endpoint to retrieve friends' data in bulk
+app.post('/api/friends/bulk', async (req, res) => {
+  const { friendUsernames } = req.body;
+
+  if (!friendUsernames || !Array.isArray(friendUsernames) || friendUsernames.length === 0) {
+    return res.status(400).json({ error: 'Invalid input: friendUsernames must be a non-empty array' });
+  }
+
+  try {
+    // Call the database function to get bulk friend data
+    const result = await DB.getBulkData(friendUsernames);
+    res.status(200).json(result);
+    console.log("bulkData result: ", result);
+  } catch (error) {
+    console.error('Error fetching friends data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+  apiRouter.post('/users', async (req, res) => {
+    try {
+        console.log("entered getUsersData Endpoint");
+
+        const user = await DB.getUser(req.body.email);
+        
+        if (!user) {
+            // Send a proper JSON response even if no user is found
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Send user data as JSON
+        res.json(user);
+    } catch (error) {
+        console.error('Error fetching user:', error);
+        // Send an error response in JSON format
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 // CreateAuth token for a new user

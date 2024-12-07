@@ -8,7 +8,7 @@ export function Login({ userName, authState, onAuthChange}) {
   return (
     <main className='container-fluid bg-secondary text-center'>
       <div>
-        <h1 className="banner">Welcome to TEST!</h1>
+        <h1 className="banner">Welcome to Tagster!</h1>
             <div className="input">
             {authState !== AuthState.Unknown}
         {authState === AuthState.Authenticated && (

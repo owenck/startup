@@ -35,7 +35,7 @@ async function createUser(email, password, profilePicture) {
       password: passwordHash,
       token: uuid.v4(),
       score: 0,
-      image: profilePicture,
+      tagState: true,
       friends: [],
     };
     await userCollection.insertOne(user);
@@ -62,6 +62,37 @@ async function createUser(email, password, profilePicture) {
     userCollection.findOneAndUpdate({email: user}, { $set: {friends: friends}});
   }
 
+  async function getBulkData(friendUsernames) {
+    if (!Array.isArray(friendUsernames) || friendUsernames.length === 0) {
+      throw new Error('Invalid input: friendUsernames must be a non-empty array');
+    }
+  
+    if (!userCollection) {
+      throw new Error('Database not initialized');
+    }
+  
+    try {
+      // Query the database for all friends in the provided array
+      const friendsData = await userCollection.find({ email: { $in: friendUsernames } }).toArray();
+      // Map and return the relevant data fields
+      return friendsData.map(friend => ({
+        email: friend.email,
+        score: friend.score,
+        tagState: friend.tagState,
+      }));
+    } catch (error) {
+      console.error('Error fetching friends data:', error);
+      throw error; // Throw error to be handled by the calling function
+    }
+  }
+
+  async function updateScore(email) {
+    await userCollection.findOneAndUpdate(
+      { email }, // Find the user by username
+      { $inc: { score: 1 } } // Increment the score by 1
+    );
+  }
+
   module.exports = {
     getUser,
     getUserByToken,
@@ -70,4 +101,6 @@ async function createUser(email, password, profilePicture) {
     getImage,
     getFriendsArray,
     updateFriendsArray,
+    getBulkData,
+    updateScore,
   };
