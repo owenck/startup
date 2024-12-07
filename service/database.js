@@ -89,7 +89,10 @@ async function createUser(email, password, profilePicture) {
   async function updateScore(email) {
     await userCollection.findOneAndUpdate(
       { email }, // Find the user by username
-      { $inc: { score: 1 } } // Increment the score by 1
+      { 
+       $inc: { score: 1 }, // Increment the score by 1
+       $set: { tagState: false } // Set tagState to false
+      } 
     );
   }
 
