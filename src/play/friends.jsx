@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { GameEvent, GameNotifier } from './gameNotifier';
 
-// Your existing functions
 function Message(friend) {
     return friend.tagState ? "Tag!" : "Tagged";
 }
@@ -11,32 +9,32 @@ function StatusMessage(friend) {
     return friend.tagState ? "You're it!" : "Tagged";
 }
 
-
 async function fetchFriendsData(friendUsernames) {
     try {
-      const response = await fetch('/api/friends/bulk', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ friendUsernames }),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-      const friendsData = await response.json();
-      return friendsData;
+        const response = await fetch('/api/friends/bulk', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ friendUsernames }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const friendsData = await response.json();
+        return friendsData;
     } catch (error) {
-      console.error('Error fetching friends data:', error);
-      return [];
+        console.error('Error fetching friends data:', error);
+        return [];
     }
 }
 
 export function Friends({ userName }) {
     const [friends, setFriends] = React.useState([]);
     const [friendImages, setFriendImages] = React.useState([]);
+    const [notification, setNotification] = React.useState(null); // Notification state
 
     React.useEffect(() => {
         const fetchFriends = async () => {
@@ -48,17 +46,16 @@ export function Friends({ userName }) {
                     },
                     body: JSON.stringify({ userName }),
                 });
-    
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-    
+
                 const friendUsernames = await response.json();
                 if (!friendUsernames || !Array.isArray(friendUsernames)) {
                     throw new Error('Invalid friends list data');
                 }
-    
-                // Fetch detailed friend data in bulk
+
                 const friendsDetails = await fetchFriendsData(friendUsernames);
                 setFriends(friendsDetails);
                 console.log(friendsDetails);
@@ -66,12 +63,10 @@ export function Friends({ userName }) {
                 console.error('Error fetching friends:', error);
             }
         };
-    
+
         fetchFriends();
     }, [userName]);
-    
 
-    // Fetch profile images for the friends whenever friends list changes
     React.useEffect(() => {
         const fetchImages = async () => {
             try {
@@ -79,7 +74,7 @@ export function Friends({ userName }) {
                     fetch('https://picsum.photos/200').then((response) => response.url)
                 );
                 const images = await Promise.all(imagePromises);
-                setFriendImages(images); // Store all the fetched images
+                setFriendImages(images);
             } catch (error) {
                 console.error('Error fetching images:', error);
             }
@@ -90,34 +85,52 @@ export function Friends({ userName }) {
         }
     }, [friends]);
 
+    React.useEffect(() => {
+        // Listen for TagEvent messages
+        GameNotifier.addHandler((event) => {
+            if (event.type === GameEvent.Tag) {
+                setNotification(`${event.value.taggedUser} was tagged!`);
+
+                // Clear the notification after 3 seconds
+                setTimeout(() => setNotification(null), 3000);
+            }
+        });
+
+        return () => {
+            GameNotifier.removeHandler((event) => {
+                if (event.type === GameEvent.Tag) {
+                    setNotification(null);
+                }
+            });
+        };
+    }, []);
+
     const handleIncreaseScore = async (friend, index) => {
         console.log("Button Pressed");
         try {
-          // Make API call to update the score in the database
-          const response = await fetch('/api/friends/increaseScore', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: friend.email, userName }), // Assuming `friend.name` is the username
-          });
-      
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-      
-          // Update the local state to reflect the new score
-          const updatedFriends = friends.map((f, i) =>
-            i === index ? { ...f, score: f.score + 1 } : f
-          );
-          setFriends(updatedFriends);
-          GameNotifier.broadcastEvent(userName, GameEvent.Start, {});
+            const response = await fetch('/api/friends/increaseScore', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: friend.email, userName }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const updatedFriends = friends.map((f, i) =>
+                i === index ? { ...f, score: f.score + 1 } : f
+            );
+            setFriends(updatedFriends);
+
+            // Broadcast the tag event through WebSocket
+            GameNotifier.broadcastEvent(userName, GameEvent.Tag, { taggedUser: friend.email });
         } catch (error) {
-          console.error('Error increasing score:', error);
+            console.error('Error increasing score:', error);
         }
-
-
-      };
+    };
 
     return (
         <main className="container-fluid bg-secondary text-center">
@@ -135,16 +148,16 @@ export function Friends({ userName }) {
                             <div className="content">Tag Score: {friend.score}</div>
                             <div className="content">Tag Status: {StatusMessage(friend)}</div>
                             <button
-                            onClick={() => handleIncreaseScore(friend, index)}
-                            type="button"
-                            className="tagbutton"
-                            disabled={!friend.tagState}
+                                onClick={() => handleIncreaseScore(friend, index)}
+                                type="button"
+                                className="tagbutton"
+                                disabled={!friend.tagState}
                             >
-                            {Message(friend)}
+                                {Message(friend)}
                             </button>
                         </div>
                     ))
-            ) : (
+                ) : (
                     <p>
                         No friends added yet.
                         <br />
@@ -152,6 +165,12 @@ export function Friends({ userName }) {
                     </p>
                 )}
             </div>
+
+            {notification && (
+                <div className="notification">
+                    {notification}
+                </div>
+            )}
         </main>
     );
 }

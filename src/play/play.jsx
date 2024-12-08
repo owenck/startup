@@ -6,7 +6,6 @@ export function Play ({userName, friends, increaseScore}) {
     return (
         <main className='container-fluid bg-secondary text-center'>
             <Friends userName={userName} friends={friends} increaseScore={increaseScore}/>
-            <TagGame userName={userName}/>
         </main>
     );
 }
