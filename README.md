@@ -86,4 +86,4 @@ All data is stored and retrieved from my database including creation and authent
 - Frontend makes WebSocket connection
 - Tags are sent over WebSocket
 - Tags are displayed on the play page momentarily
-- My website is fully functional! It does not work exactly as originally intended but it demonstrates my ability to use the different technologies well and I'm proud of it!
+- My website is fully functional! It does not work exactly as originally intended (The page must be refreshed in order for buttons to change, showing somebody has been tagged) but it demonstrates my ability to use the different technologies taught in class well and I'm proud of it! 
