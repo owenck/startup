@@ -19,12 +19,15 @@ const GameEvent = {
     constructor() {
       let port = window.location.port;
       const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-      this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+      console.log("Connecting to WebSocket...");
+    this.socket = new WebSocket(`${protocol}://${window.location.hostname}:4000/ws`);
+    this.socket.onerror = (error) => console.error("WebSocket error:", error);
+
       this.socket.onopen = (event) => {
-        this.receiveEvent(new EventMessage('Simon', GameEvent.System, { msg: 'connected' }));
+        this.receiveEvent(new EventMessage('Tagster ', GameEvent.System, { msg: 'connected' }));
       };
       this.socket.onclose = (event) => {
-        this.receiveEvent(new EventMessage('Simon', GameEvent.System, { msg: 'disconnected' }));
+        this.receiveEvent(new EventMessage('Tagster ', GameEvent.System, { msg: 'disconnected' }));
       };
       this.socket.onmessage = async (msg) => {
         try {

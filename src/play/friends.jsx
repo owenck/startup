@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { GameEvent, GameNotifier } from './gameNotifier';
+
 // Your existing functions
 function Message(friend) {
     return friend.tagState ? "Tag!" : "Tagged";
@@ -32,7 +34,7 @@ async function fetchFriendsData(friendUsernames) {
     }
 }
 
-export function Friends({ userName, increaseScore }) {
+export function Friends({ userName }) {
     const [friends, setFriends] = React.useState([]);
     const [friendImages, setFriendImages] = React.useState([]);
 
@@ -109,6 +111,7 @@ export function Friends({ userName, increaseScore }) {
             i === index ? { ...f, score: f.score + 1 } : f
           );
           setFriends(updatedFriends);
+          GameNotifier.broadcastEvent(userName, GameEvent.Start, {});
         } catch (error) {
           console.error('Error increasing score:', error);
         }
