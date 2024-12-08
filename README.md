@@ -78,3 +78,12 @@ All data is stored and retrieved from my database including creation and authent
 - Friends List, Scores, and Tag Status all stored in DB
 - User registration and existing user authentication created!
 - Functionality restricted to only authenticated users
+
+
+# Websocket Deliverable
+
+- Backend listens for WebSocket connection
+- Frontend makes WebSocket connection
+- Tags are sent over WebSocket
+- Tags are displayed on the play page momentarily
+- My website is fully functional! It does not work exactly as originally intended but it demonstrates my ability to use the different technologies well and I'm proud of it!
