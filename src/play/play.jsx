@@ -1,6 +1,5 @@
 import React from 'react';
 import { Friends } from "./friends"
-import { TagGame } from "./tagGame"
 
 export function Play ({userName, friends, increaseScore}) {
     return (
