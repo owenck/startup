@@ -86,7 +86,7 @@ export default function App() {
             }
             exact
           />
-            <Route path='/play' element={<Play userName={userName} friends={friends} />} />
+            <Route path='/play' element={<Play userName={userName} />} />
             <Route path='/about' element={<About />} />
             <Route path='/add' element={<Add addFriend={addFriend} />} />
             <Route path='*' element={<NotFound />} />

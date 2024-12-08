@@ -87,7 +87,6 @@ app.post('/api/friends/bulk', async (req, res) => {
     // Call the database function to get bulk friend data
     const result = await DB.getBulkData(friendUsernames);
     res.status(200).json(result);
-    console.log("bulkData result: ", result);
   } catch (error) {
     console.error('Error fetching friends data:', error);
     res.status(500).json({ error: 'Internal server error' });

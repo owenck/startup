@@ -15,7 +15,7 @@ class GameEventNotifier {
     handlers = [];
 
     constructor() {
-        const port = 4000; // set to 4000, could be problematic
+        const port = window.location.port; // set to 4000, could be problematic
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         console.log("Connecting to WebSocket...");
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
