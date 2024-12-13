@@ -195,3 +195,98 @@ iframe	Inline frame of another HTML page
 
 34. **Promises Output**:
     - The output depends on the promise's resolution or rejection handling in the provided code.
+
+
+#Final Exam
+
+---
+
+## **Ports and Protocols**
+- **HTTP Default Port**: 80  
+- **HTTPS Default Port**: 443  
+- **SSH Default Port**: 22  
+
+---
+
+## **HTTP Basics**
+- **HTTP Status Codes**:
+  - **300s**: Redirects (e.g., 301 for permanent, 302 for temporary)  
+  - **400s**: Client Errors (e.g., 404 Not Found, 403 Forbidden)  
+  - **500s**: Server Errors (e.g., 500 Internal Server Error)
+
+- **`Content-Type` Header**: Specifies the data format of the response (e.g., `application/json`, `text/html`).
+
+---
+
+## **Cookies**
+- **Secure Cookie**: Only sent over HTTPS.
+- **Http-Only Cookie**: Not accessible via JavaScript (`document.cookie`).
+- **Same-Site Cookie**: Restricts cross-site requests:
+  - `Strict`: Only sent on same-site requests.
+  - `Lax`: Sent on top-level navigation.
+
+---
+
+## **Express.js**
+- Middleware example: Log sequence may vary based on middleware order. Carefully inspect the provided function and path matching.
+
+- Front-end fetch + Express response: Understand how Express sends JSON (`res.json`) and how `fetch` handles promises.
+
+---
+
+## **MongoDB**
+- Query Example: `{name: "Mark"}` selects documents where the field `name` equals `"Mark"`. Ensure proper case sensitivity.
+
+---
+
+## **Security**
+- **Password Storage**: Always hash passwords with a strong algorithm (e.g., bcrypt, Argon2). Never store plain text passwords.
+
+---
+
+## **Websockets**
+- **Purpose**: Enables full-duplex communication between client and server over a single TCP connection.
+
+- Back-end and Front-end Logs: Match message sequences between `ws.send` (server-side) and `onmessage` (client-side).
+
+---
+
+## **Acronyms**
+- **JSX**: JavaScript XML  
+- **JS**: JavaScript  
+- **AWS**: Amazon Web Services  
+- **NPM**: Node Package Manager  
+- **NVM**: Node Version Manager  
+
+---
+
+## **React**
+- **React.useState**: Manages state within a functional component.
+- **React Hooks**:
+  - **State Hook (`useState`)**: Adds state to functional components.
+  - **Context Hook (`useContext`)**: Accesses context values.
+  - **Ref Hook (`useRef`)**: Manages DOM references or mutable values.
+  - **Effect Hook (`useEffect`)**: Handles side effects (e.g., fetching data).
+  - **Performance Hook (`useMemo`, `useCallback`)**: Optimizes performance.
+
+- **React Router**: Understand routing logic and props like `useParams`.
+
+---
+
+## **Node.js and Tools**
+- **`package.json`**: Defines dependencies, scripts, and metadata for your project.
+
+- **`fetch` Function**: Performs asynchronous HTTP requests; returns a promise.
+
+- **Node.js**: JavaScript runtime built on Chrome's V8 engine.
+
+- **PM2**: Process manager for Node.js applications; supports scaling, monitoring.
+
+- **Vite**: Front-end build tool offering fast development environment.
+
+---
+
+## **Miscellaneous**
+- **React Component Output**: Check how props and children are rendered within the component's return statement.
+
+- **React Nested Components**: Understand the rendering tree created by component composition.
